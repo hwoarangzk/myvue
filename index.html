@@ -16,5 +16,68 @@
 			}
 		});
 	</script>
+
+	<div id="app3">
+		<p v-if="seen">seen</p>
+	</div>
+	<script type="text/javascript">
+		var app3 = new Vue({
+			el: '#app3',
+			data: {
+				seen: true
+			}
+		});
+	</script>
+
+	<div id="app4">
+		<ol>
+			<li v-for="todo in todos">
+				{{todo.text}}
+			</li>
+		</ol>
+	</div>
+	<script type="text/javascript">
+		var app4 = new Vue({
+			el: '#app4',
+			data: {
+				todos: [{
+					text: 'hello1'
+				}, {
+					text: 'hello2'
+				}]
+			}
+		});
+	</script>
+
+	<div id="app5">
+		<p>{{message}}</p>
+		<button v-on:click="reverseMessage">reverse</button>
+	</div>
+	<script type="text/javascript">
+		var app5 = new Vue({
+			el: '#app5',
+			data: {
+				message: 'abcde'
+			},
+			methods: {
+				reverseMessage: function() {
+					this.message = this.message.split('').reverse().join('');
+				}
+			}
+		});
+	</script>
+
+	<div id="app6">
+		<p>{{message}}</p>
+		<input v-model="message" />
+	</div>
+	<script type="text/javascript">
+		var app6 = new Vue({
+			el: '#app6',
+			data: {
+				message: 'hello Vue!'
+			}
+		});
+	</script>
 </body>
 </html>
