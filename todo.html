@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Todo List Demo</title>
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	<style type="text/css">
+
+		/** {
+			padding: 0;
+			margin: 0;	
+		}*/
+		#list li {
+			width: 200px;
+			height: 30px;
+			line-height: 30px;
+			position: relative;
+		}
+
+		#list li span {
+			display: inline-block;
+			max-width: 140px;
+			overflow: hidden;
+			vertical-align: bottom;
+			text-overflow: ellipsis;
+		}
+
+		#list li button {
+			float: right;
+			position: relative;
+			top: 4px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="text" name="todo" v-model="singleTodo"><button id="add" @click="add">Add</button><br/>
+		<p>List:</p>
+			<template v-if="todos.length !==0">
+				<ol id="list">
+					<li v-for="(todo, index) in todos">
+						<span key="index">{{todo}}</span>
+						<button @click="del(index, $event)">Delete</button>
+					</li>
+				</ol>
+			</template>
+			<span v-else>empty todo list</span>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				todos: [],
+				singleTodo: ''
+			},
+			methods: {
+				del: function(index, event) {
+					this.todos.splice(index, 1);
+				},
+				add: function() {
+					var todo = this.singleTodo;
+					this.todos.push(todo);
+					this.singleTodo = '';
+				}
+			}
+		});
+	</script>
+</body>
+</html>

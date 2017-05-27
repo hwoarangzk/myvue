@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Computed</title>
+	<script type="text/javascript" src="./lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>Original message: <input v-model="message"/></p>
+		<p>Computed reversed message: "{{reversedMessage}}"</p>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'hello vue!'
+			},
+			computed: {
+				reversedMessage: function() {
+					return this.message.split('').reverse().join('')
+				}
+			}
+		});
+	</script>
+</body>
+</html>
